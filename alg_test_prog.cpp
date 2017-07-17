@@ -92,7 +92,7 @@ int MaxSum(int *X, int L, int U)
   maxInA = MaxSum(X,L,M);
   maxInB = MaxSum(X,M+1, U);
 
-  return max(maxCrossing, maxInA, maxInB);
+  return max(maxCrossing, max(maxInA, maxInB));
 }
 
 /* algorithm_4 */
