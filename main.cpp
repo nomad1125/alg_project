@@ -14,7 +14,7 @@ void read_file(int *inputArray) {
   string output = "";
   int index = 0;
   ifstream inFile("phw_input.txt");
-  inFile.open(filename)
+  inFile.open();
 
   if (!inFile) {
     cerr << "Unable to open file...";
