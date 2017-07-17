@@ -2,7 +2,7 @@
 #	Makefile
 #	variables
 CC = g++
-CFLAGS = -c
+CFLAGS = -std=c++11
 
 all : algorithm_test
 
