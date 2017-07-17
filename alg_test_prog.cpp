@@ -29,6 +29,11 @@ void read_file(int *inputArray) {
     index++;
   }
 
+  for (int i = 0; i <=10; i++)
+  {
+    cout << inputArray[i] << "\n";
+  }
+
 }
 
  int main() {

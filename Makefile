@@ -5,8 +5,8 @@ CC = g++
 
 all : alg_prog
 
-alg_prog : main.cpp
-	$(CC) main.cpp -o alg_prog
+alg_prog : alg_test_prog.cpp
+	$(CC) alg_test_prog.cpp -o alg_prog
 
 clean :
 	rm -rf *o alg_prog
