@@ -12,6 +12,7 @@
 // parts of this were sourced from old code which is based off of:
 // https://www.uow.edu.au/~lukes/TEXTBOOK/notes-cpp/io/readtextfile.html
 void read_file(int *inputArray) {
+  cout << "Beggining to read file...\n";
   string output = "";
   int index = 0;
   ifstream inFile;
@@ -31,6 +32,7 @@ void read_file(int *inputArray) {
 }
 
  int main() {
+   cout << "Starting algorithm test program...\n";
    int arrayX[10];
    read_file(arrayX);
    return 0;
