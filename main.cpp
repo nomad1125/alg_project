@@ -13,8 +13,8 @@
 void read_file(int *inputArray) {
   string output = "";
   int index = 0;
-  ifstream inFile("phw_input.txt");
-  inFile.open();
+  ifstream inFile;
+  inFile.open("phw_input.txt");
 
   if (!inFile) {
     cerr << "Unable to open file...";
