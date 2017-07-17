@@ -2,12 +2,11 @@
 #	Makefile
 #	variables
 CC = g++
-CFLAGS = -c
 
 all : alg_prog
 
 alg_prog : main.cpp
-	$(CC) $(CFLAGS) main.cpp -o alg_prog $(OBJ)
+	$(CC) main.cpp -o alg_prog
 
 clean :
 	rm -rf *o alg_prog
