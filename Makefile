@@ -6,7 +6,7 @@ CFLAGS = -c
 
 all : alg_prog
 
-audisktool_jkt0011 : main.cpp
+alg_prog : main.cpp
 	$(CC) $(CFLAGS) -o alg_prog $(OBJ)
 
 clean :
