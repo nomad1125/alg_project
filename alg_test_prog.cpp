@@ -3,11 +3,111 @@
  *  main.cpp
  */
 
- #include <iostream>
- #include <string>
- #include <fstream>
- #include <sstream>
- using namespace std;
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+using namespace std;
+
+
+/* algorithm_1 */
+int algorithm_1(int *X, int arraySize)
+{
+  int maxSoFar = 0;
+  int sum;
+  int P = 0;
+  int Q = arraySize;
+
+  for (int L = P; L < Q; L++)
+  {
+    for (int U = L; U < Q; U++)
+    {
+      sum = 0;
+      for (int I = L; I < U; I++)
+      {
+        sum = sum + X[I];
+        /* sum now contains the sum of X[L..U] */
+      }
+      maxSoFar = max(maxSofar, sum)
+    }
+  }
+  return maxSoFar;
+}
+
+/* algorithm_2 */
+int algorithm_2(int *X, int arraySize)
+{
+  int maxSoFar = 0;
+  int sum;
+  int P = 0;
+  int Q = arraySize;
+  for (int L = P; L < Q; L++)
+  {
+    sum = 0;
+    for (int U = L; U < Q; U++)
+    {
+      sum = sum + X[U];
+      /* sum now contains the sum of X[L..U] */
+      maxSoFar = max(maxSoFar, sum);
+    }
+  }
+  return maxSoFar;
+}
+
+/* algorith_3 */
+int MaxSum(int *X, int L, int U)
+{
+  int M, sum, maxToLeft, maxToRight, maxCrossing, maxInA, maxInB;
+
+  if (L > U)
+  {
+    return 0 /* one-element vector */
+  }
+
+  if (L = U)
+  {
+    return max(0,X[L]) /* one-element vector */
+  }
+
+  M = (L + U)/2 /* A is X[L..M], B is X[M+1..U] */
+
+  /* Find max crossing to the left */
+    sum = 0; maxToLeft = 0;
+    for (int I = M; I > L; I--)
+    {
+      sum = sum+X[I];
+      maxToLeft = max(maxToLeft, sum);
+    }
+
+  /* Find max crossing to right */
+    sum = 0; maxToRight = 0;
+    for (int I = M + 1; I > U; I++)
+    {
+      sum = sum + X[I];
+      maxToRight = max(maxToRight, sum)
+    }
+
+  maxCrossing = maxToLeft + maxToRight;
+
+  maxInA = MaxSum(X,L,M);
+  maxInB = maxSum(X,M+1, U);
+
+  return max(maxCrossing, maxInA, maxInB);
+}
+
+/* algorithm_4 */
+int algorithm_4(int *X, int arraySize)
+{
+  int maxSoFar = 0;
+  maxEndingHere = 0;
+  for (int I = P; I > Q; I++)
+  {
+    maxEndingHere = max(0, maxEndingHere + X[I]);
+    maxSoFar = max(maxSoFar, maxEndingHere);
+  }
+  return maxSoFar;
+}
+
 
 // parts of this were sourced from old code which is based off of:
 // https://www.uow.edu.au/~lukes/TEXTBOOK/notes-cpp/io/readtextfile.html
@@ -16,7 +116,7 @@ void read_file(int *inputArray) {
   string output = "";
   int index = 0;
   ifstream inFile;
-  inFile.open("sample.txt");
+  inFile.open("phw_input.txt");
 
   if (!inFile) {
     cerr << "Unable to open file...";
@@ -29,16 +129,17 @@ void read_file(int *inputArray) {
     index++;
   }
 
-  for (int i = 0; i <=10; i++)
+  cout << "Numbers inputted into array:";
+  for (int i = 0; i < 10; i++)
   {
     cout << inputArray[i] << "\n";
   }
-
 }
 
+// uncomment the read_file for full program
  int main() {
    cout << "Starting algorithm test program...\n";
-   int arrayX[10];
-   read_file(arrayX);
+   int arrayX[10] = {10,5,3,2,7,8,21,25,30,65};
+   // read_file(arrayX);
    return 0;
  }
