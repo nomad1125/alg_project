@@ -22,7 +22,7 @@ void read_file(int *inputArray) {
   }
 
   while (getline(inFile, output, ',')) {
-    inputArray[index] = stoi(output);
+    inputArray[index] = atoi(output.c_str());
   }
 
 }
