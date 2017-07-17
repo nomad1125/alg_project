@@ -6,6 +6,7 @@
  #include <iostream>
  #include <string>
  #include <fstream>
+ #include <sstream>
  using namespace std;
 
 // parts of this were sourced from old code which is based off of:
@@ -22,12 +23,15 @@ void read_file(int *inputArray) {
   }
 
   while (getline(inFile, output, ',')) {
-    inputArray[index] = atoi(output.c_str());
+    stringstream converter(output);
+    converter >> inputArray[index];
+    index++;
   }
 
 }
 
  int main() {
    int arrayX[10];
+   read_file(arrayX);
    return 0;
  }
