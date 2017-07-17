@@ -18,7 +18,7 @@ void read_file(int *inputArray) {
 
   if (!inFile) {
     cerr << "Unable to open file...";
-    exit(1);
+    return 1;
   }
 
   while (getline(inFile, output, ',')) {
@@ -29,4 +29,5 @@ void read_file(int *inputArray) {
 
  int main() {
    int arrayX[10];
+   return 0;
  }
