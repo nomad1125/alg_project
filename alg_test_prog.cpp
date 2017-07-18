@@ -111,7 +111,7 @@ int algorithm_4(int *X, int arraySize)
 }
 
 
-// parts of this were sourced from old code which is based off of:
+// parts of this was sourced from old code which is based off of:
 // https://www.uow.edu.au/~lukes/TEXTBOOK/notes-cpp/io/readtextfile.html
 void read_file(int *inputArray) {
   cout << "Beggining to read file...\n";
@@ -140,8 +140,27 @@ void read_file(int *inputArray) {
 
 // uncomment the read_file for full program
  int main() {
+
    cout << "Starting algorithm test program...\n";
    int arrayX[10] = {10,5,3,2,7,8,21,25,30,65};
+   int output = 0;
    // read_file(arrayX);
+
+   /* algorithm_1 */
+   output = algorithm_1(arrayX, 10);
+   cout << "algorithm-1: " << output << endl;
+
+   /* algorithm_2 */
+   output = algorithm_2(arrayX, 10);
+   cout << "algorithm-2: " << output << endl;
+
+   /* algorithm_3 */
+   output = MaxSum(arrayX, 0, 10);
+   cout << "algorithm-3: " << output << endl;
+
+   /* algorithm_4 */
+   output = algorithm_4(arrayX, 10);
+   cout << "algorithm-4: " << output << endl;
+
    return 0;
  }
