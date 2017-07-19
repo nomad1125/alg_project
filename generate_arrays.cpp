@@ -17,6 +17,6 @@ void generate_arrays(int **arrayInput)
       arrayInput[j][i] = counter;
       counter++;
     }
-    col_counter = col_counter + 5;
+    row_counter = row_counter + 5;
   }
 }
