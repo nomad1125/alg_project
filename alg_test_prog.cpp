@@ -144,7 +144,8 @@ void read_file(int *inputArray) {
    cout << "Starting algorithm test program...\n";
    int arrayX[10] = {10,5,3,2,7,8,21,25,30,65};
    int output = 0;
-   int arrayA[19][];
+   const int MAX_COL = 19;
+   int arrayA[][MAX_COL];
    // read_file(arrayX);
 
    /* algorithm_1 */
@@ -163,14 +164,7 @@ void read_file(int *inputArray) {
   //  output = algorithm_4(arrayX, 10);
   //  cout << "algorithm-4: " << output << endl;
 
-   generate_arrays(arrayA);
-
-   for (int i = 0; i < MAX_ROWS; i++)
-   {
-     int col_length = sizeof (arrayA[i]) / sizeof (int);
-     cout << col_length << endl;
-
-   }
+   // generate_arrays(arrayA);
 
    return 0;
  }

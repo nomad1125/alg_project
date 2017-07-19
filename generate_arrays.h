@@ -10,8 +10,6 @@
 
 using namespace std;
 
-const int MAX_ROWS = 19;
-
 void generate_arrays(int **arrayInput);
 
 #endif
