@@ -175,12 +175,12 @@ void read_file(int *inputArray) {
 
   for (int i = 0; i < MAX_ROW; i++)
   {
-    arrayA[i] = new int[colCount]
+    arrayA[i] = new int[colCount];
     colCount = colCount + 5;
   }
 
   arrayA[0][0] = 5;
-  
+
 
    // generate_arrays(arrayA);
 
