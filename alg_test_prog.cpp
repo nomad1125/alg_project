@@ -7,6 +7,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "generate_arrays.h"
 using namespace std;
 
 
@@ -109,7 +110,6 @@ int algorithm_4(int *X, int arraySize)
   }
   return maxSoFar;
 }
-
 
 // parts of this was sourced from old code which is based off of:
 // https://www.uow.edu.au/~lukes/TEXTBOOK/notes-cpp/io/readtextfile.html
