@@ -7,14 +7,14 @@
 
 void generate_arrays(int **arrayInput)
 {
-  int col_counter = 10;
+  int row_counter = 10;
   int counter = 0;
 
-  for (int i = 0; i < MAX_ROWS; i++)
+  for (int i = 0; i < MAX_COL; i++)
   {
-    for (int j = 0; j < col_counter; j++)
+    for (int j = 0; j < row_counter; j++)
     {
-      arrayInput[i][j] = counter;
+      arrayInput[j][i] = counter;
       counter++;
     }
     col_counter = col_counter + 5;

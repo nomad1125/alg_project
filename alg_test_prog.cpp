@@ -144,7 +144,6 @@ void read_file(int *inputArray) {
    cout << "Starting algorithm test program...\n";
    int arrayX[10] = {10,5,3,2,7,8,21,25,30,65};
    int output = 0;
-   const int MAX_COL = 19;
    int arrayA[][MAX_COL];
    // read_file(arrayX);
 

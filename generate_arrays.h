@@ -10,6 +10,8 @@
 
 using namespace std;
 
+static const int MAX_COL = 19;
+
 void generate_arrays(int **arrayInput);
 
 #endif
