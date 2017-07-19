@@ -180,7 +180,7 @@ void read_file(int *inputArray) {
   }
 
   arrayA[0][0] = 5;
-
+  cout << arrayA << endl;
 
    // generate_arrays(arrayA);
 
