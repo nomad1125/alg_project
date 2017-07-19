@@ -144,23 +144,33 @@ void read_file(int *inputArray) {
    cout << "Starting algorithm test program...\n";
    int arrayX[10] = {10,5,3,2,7,8,21,25,30,65};
    int output = 0;
+   int arrayA[19][];
    // read_file(arrayX);
 
    /* algorithm_1 */
-   output = algorithm_1(arrayX, 10);
-   cout << "algorithm-1: " << output << endl;
+  //  output = algorithm_1(arrayX, 10);
+  //  cout << "algorithm-1: " << output << endl;
 
    /* algorithm_2 */
-   output = algorithm_2(arrayX, 10);
-   cout << "algorithm-2: " << output << endl;
+  //  output = algorithm_2(arrayX, 10);
+  //  cout << "algorithm-2: " << output << endl;
 
    /* algorithm_3 */
-   output = MaxSum(arrayX, 0, 10);
-   cout << "algorithm-3: " << output << endl;
+  //  output = MaxSum(arrayX, 0, 10);
+  //  cout << "algorithm-3: " << output << endl;
 
    /* algorithm_4 */
-   output = algorithm_4(arrayX, 10);
-   cout << "algorithm-4: " << output << endl;
+  //  output = algorithm_4(arrayX, 10);
+  //  cout << "algorithm-4: " << output << endl;
+
+   generate_arrays(arrayA);
+
+   for (int i = 0; i < MAX_ROWS; i++)
+   {
+     int col_length = sizeof (arrayA[i]) / sizeof (int);
+     cout << col_length << endl;
+
+   }
 
    return 0;
  }
