@@ -64,7 +64,7 @@ int MaxSum(int *X, int L, int U)
     return 0; /* one-element vector */
   }
 
-  if (L = U)
+  if (L == U)
   {
     return max(0,X[L]); /* one-element vector */
   }
@@ -102,7 +102,7 @@ int algorithm_4(int *X, int arraySize)
   int maxEndingHere = 0;
   int P = 0;
   int Q = arraySize;
-  for (int I = P; I > Q; I++)
+  for (int I = P; I < Q; I++)
   {
     maxEndingHere = max(0, maxEndingHere + X[I]);
     maxSoFar = max(maxSoFar, maxEndingHere);
@@ -145,26 +145,26 @@ void read_file(int *inputArray) {
  int main()
  {
    cout << "Starting algorithm test program...\n";
-   int arrayX[10] = {10,5,3,2,7,8,21,25,30,65};
+   int arrayX[10] = {10,5,3,2,7,8,21,23,30,6};
    int output = 0;
 
    // read_file(arrayX);
 
    /* algorithm_1 */
-  //  output = algorithm_1(arrayX, 10);
-  //  cout << "algorithm-1: " << output << endl;
+   output = algorithm_1(arrayX, 10);
+   cout << "algorithm-1: " << output << endl;
 
    /* algorithm_2 */
-  //  output = algorithm_2(arrayX, 10);
-  //  cout << "algorithm-2: " << output << endl;
+   output = algorithm_2(arrayX, 10);
+   cout << "algorithm-2: " << output << endl;
 
    /* algorithm_3 */
-  //  output = MaxSum(arrayX, 0, 10);
-  //  cout << "algorithm-3: " << output << endl;
+   output = MaxSum(arrayX, 0, 10);
+   cout << "algorithm-3: " << output << endl;
 
    /* algorithm_4 */
-  //  output = algorithm_4(arrayX, 10);
-  //  cout << "algorithm-4: " << output << endl;
+   output = algorithm_4(arrayX, 10);
+   cout << "algorithm-4: " << output << endl;
 
   /* Start step 6 */
   const int MAX_ROW = 19;
@@ -172,15 +172,18 @@ void read_file(int *inputArray) {
   int **arrayA = new int*[MAX_ROW];
 
   int counter = 0;
-
+  /* creates array */
   for (int i = 0; i < MAX_ROW; i++)
   {
     arrayA[i] = new int[colCount];
     colCount = colCount + 5;
   }
 
-  arrayA[0][0] = 5;
-  cout << arrayA[0][0] << endl;
+  /* fills array */
+  for (int i = 0; i < MAX_ROW; i++)
+  {
+    
+  }
 
    // generate_arrays(arrayA);
 
