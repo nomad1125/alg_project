@@ -138,15 +138,16 @@ void read_file(int *inputArray) {
 }
 
 // uncomment the read_file for full program
- int main() {
-
+/**
+ *  source of multi dimensional array research:
+ *  https://stackoverflow.com/questions/936687/how-do-i-declare-a-2d-array-in-c-using-new
+ */
+ int main()
+ {
    cout << "Starting algorithm test program...\n";
    int arrayX[10] = {10,5,3,2,7,8,21,25,30,65};
    int output = 0;
-   int arrayA[][];
-   const int MAX_ROW = 19;
-   int col_counter = 10;
-   int counter = 0;
+
    // read_file(arrayX);
 
    /* algorithm_1 */
@@ -165,16 +166,21 @@ void read_file(int *inputArray) {
   //  output = algorithm_4(arrayX, 10);
   //  cout << "algorithm-4: " << output << endl;
 
-  /* creates array */
+  /* Start step 6 */
+  const int MAX_ROW = 19;
+  int colCount = 10;
+  int **arrayA = new int*[MAX_ROW];
+
+  int counter = 0;
+
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int j = 0; j < col_counter; j++)
-    {
-      arrayA[i][j] = counter;
-      counter++;
-    }
-    col_counter = col_counter + 5;
+    arrayA[i] = new int[colCount]
+    colCount = colCount + 5;
   }
+
+  arrayA[0][0] = 5;
+  
 
    // generate_arrays(arrayA);
 
