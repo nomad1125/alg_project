@@ -7,7 +7,6 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include "generate_arrays.h"
 using namespace std;
 
 
@@ -144,7 +143,10 @@ void read_file(int *inputArray) {
    cout << "Starting algorithm test program...\n";
    int arrayX[10] = {10,5,3,2,7,8,21,25,30,65};
    int output = 0;
-   int arrayA[][19];
+   int arrayA[][];
+   const int MAX_ROW = 19;
+   int col_counter = 10;
+   int counter = 0;
    // read_file(arrayX);
 
    /* algorithm_1 */
@@ -162,6 +164,17 @@ void read_file(int *inputArray) {
    /* algorithm_4 */
   //  output = algorithm_4(arrayX, 10);
   //  cout << "algorithm-4: " << output << endl;
+
+  /* creates array */
+  for (int i = 0; i < MAX_ROW; i++)
+  {
+    for (int j = 0; j < col_counter; j++)
+    {
+      arrayA[i][j] = counter;
+      counter++;
+    }
+    col_counter = col_counter + 5;
+  }
 
    // generate_arrays(arrayA);
 
