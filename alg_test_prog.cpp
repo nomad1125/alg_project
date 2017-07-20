@@ -9,8 +9,9 @@
 #include <sstream>
 #include <stdlib.h>
 #include <time.h>
-using namespace std;
+#include <cstdlib>
 
+using namespace std;
 
 /* algorithm_1 */
 int algorithm_1(int *X, int arraySize)
@@ -172,9 +173,10 @@ void read_file(int *inputArray) {
   const int MAX_ROW = 19;
   int colCount = 10;
   int **arrayA = new int*[MAX_ROW];
+  srand (time(NULL));
   int randomNum = rand() % 19 + (-9);
 
-  cout << randomNum << endl;
+  cout << RAND_MAX << endl;
 
   int counter = 0;
   /* creates array */
