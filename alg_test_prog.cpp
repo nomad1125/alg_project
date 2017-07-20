@@ -220,9 +220,9 @@ void read_file(int *inputArray) {
       auto finish = std::chrono::high_resolution_clock::now();
       std::chrono::duration<double> elapsed = finish - start;
       timeMatrix[i][0] = timeMatrix[i][0] + elapsed.count(); //time in secs
-      if (maxTime < t1.count())
+      if (maxTime < elapsed.count())
       {
-        maxTime = t1.count();
+        maxTime = elapsed.count();
       }
 
       colCount = colCount + 5; //reset
