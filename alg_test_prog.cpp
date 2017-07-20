@@ -152,7 +152,7 @@ void read_file(int *inputArray) {
    int arrayX[10] = {10,5,3,2,7,8,21,23,30,6};
    int output = 0;
 
-   // read_file(arrayX);
+   read_file(arrayX);
 
    /* algorithm_1 */
    output = algorithm_1(arrayX, 10);
