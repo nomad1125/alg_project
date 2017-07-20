@@ -218,8 +218,8 @@ void read_file(int *inputArray) {
       }
       // Record end time
       auto finish = std::chrono::high_resolution_clock::now();
-      std::chrono::duration<double> t1 = finish - start;
-      timeMatrix[i][0] = timeMatrix[i][0] + t1.count(); //time in secs
+      std::chrono::duration<double> elapsed = finish - start;
+      timeMatrix[i][0] = timeMatrix[i][0] + elapsed.count(); //time in secs
       if (maxTime < t1.count())
       {
         maxTime = t1.count();
