@@ -7,6 +7,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 
@@ -170,6 +172,7 @@ void read_file(int *inputArray) {
   const int MAX_ROW = 19;
   int colCount = 10;
   int **arrayA = new int*[MAX_ROW];
+  int randomNum = rand() % 19 + (-9);
 
   int counter = 0;
   /* creates array */
@@ -182,7 +185,7 @@ void read_file(int *inputArray) {
   /* fills array */
   for (int i = 0; i < MAX_ROW; i++)
   {
-    
+
   }
 
    // generate_arrays(arrayA);
