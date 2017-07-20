@@ -182,7 +182,7 @@ void read_file(int *inputArray) {
     arrayA[i] = new int[colCount];
     colCount = colCount + 5;
   }
-  colCount = 10;  // to reset colCount
+  colCount = 10;  // reset colCount
 
   /* fills array */
   for (int i = 0; i < MAX_ROW; i++)
@@ -194,13 +194,11 @@ void read_file(int *inputArray) {
   }
   colCount = 10; //reset
 
-  /* step 7 */
   /**
+   *  step 7
    *  source for elapsed time:
    *  https://www.pluralsight.com/blog/software-development/how-to-measure-execution-time-intervals-in-c--
    */
-
-
   for (int i = 0; i < MAX_ROW; i++)
   {
     // Record start time
@@ -214,7 +212,10 @@ void read_file(int *inputArray) {
     auto finish = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = finish - start;
     cout << "algorithm-1 time: " << elapsed.count() << " s" << endl;
+
+    colCount = colCount + 5;
   }
+  colCount = 10; // reset
 
   return 0;
  }
