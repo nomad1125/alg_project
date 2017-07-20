@@ -168,9 +168,10 @@ void read_file(int *inputArray) {
 
    /* algorithm_4 */
    output = algorithm_4(arrayX, 10);
-   cout << "algorithm-4: " << output << endl;
+   cout << "algorithm-4: " << output << "\n"<< endl;
 
   /* Start step 6 */
+  cout << "Starting step 6..." << endl;
   const int MAX_ROW = 19;
   int colCount = 10;
   int **arrayA = new int*[MAX_ROW];
@@ -199,41 +200,152 @@ void read_file(int *inputArray) {
    *  source for elapsed time:
    *  https://www.pluralsight.com/blog/software-development/how-to-measure-execution-time-intervals-in-c--
    */
+  cout << "\nStarting step 7..." << endl;
   double timeMatrix[19][8];
-  double maxTime = 0;
+  double highTime = 0;
+  std::chrono::duration<double> elapsed;
 
   /*
-   *  step 7: algorithm_1
+   *  step 7: algorithm-1
    */
+  cout << "Starting step 7: algorithm-1 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
     for (int N = 0; N < 1000; N++)
     {
       // Record start time
       auto start = std::chrono::high_resolution_clock::now();
+
       for (int j = 0; j < colCount; j++)
       {
-        /* algorithm_1 */
         output = algorithm_1(arrayA[i], colCount);
       }
+
       // Record end time
       auto finish = std::chrono::high_resolution_clock::now();
-      std::chrono::duration<double> elapsed = finish - start;
+      elapsed = finish - start;
       timeMatrix[i][0] = timeMatrix[i][0] + elapsed.count(); //time in secs
-      if (maxTime < elapsed.count())
+      if (highTime < elapsed.count())
       {
-        maxTime = elapsed.count();
+        highTime = elapsed.count();
+      }
+    }
+    colCount = colCount + 5;
+    timeMatrix[i][0] = timeMatrix[i][0] / 1000;
+    timeMatrix[i][4] = highTime;
+    highTime = 0; // reset
+    cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
+      << " s"<< endl;
+    cout << "algorithm-1 row " << i << " max run time:  \t" << timeMatrix[i][4]
+      << " s\n"<< endl;
+  }
+  colCount = 10; // reset
+
+  /*
+   *  step 7: algorithm-2
+   */
+  cout << "Starting step 7: algorithm-2 test run..." << endl;
+  for (int i = 0; i < MAX_ROW; i++)
+  {
+    for (int N = 0; N < 1000; N++)
+    {
+      // Record start time
+      auto start = std::chrono::high_resolution_clock::now();
+
+      for (int j = 0; j < colCount; j++)
+      {
+        output = algorithm_2(arrayA[i], colCount);
       }
 
-      colCount = colCount + 5; //reset
+      /* Record end time */
+      auto finish = std::chrono::high_resolution_clock::now();
+      elapsed = finish - start;
+      timeMatrix[i][1] = timeMatrix[i][1] + elapsed.count(); //time in secs
+      if (highTime < elapsed.count())
+      {
+        highTime = elapsed.count();
+      }
     }
-    timeMatrix[i][0] = timeMatrix[i][0] / 1000; // t1
-    timeMatrix[i][4] = maxTime; // t4
-    maxTime = 0; // reset
-    cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
-      << endl;
-    cout << "algorithm-1 row " << i << " max run time:  \t" << timeMatrix[i][4]
-      << endl;
+    colCount = colCount + 5;
+    timeMatrix[i][1] = timeMatrix[i][1] / 1000;
+    timeMatrix[i][5] = highTime;
+    highTime = 0; // reset
+    cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1]
+      << " s"<< endl;
+    cout << "algorithm-2 row " << i << " max run time:  \t" << timeMatrix[i][5]
+      << " s\n"<< endl;
+  }
+  colCount = 10; // reset
+
+  /*
+   *  step 7: algorithm-3
+   */
+  cout << "Starting step 7: algorithm-3 test run..." << endl;
+  for (int i = 0; i < MAX_ROW; i++)
+  {
+    for (int N = 0; N < 1000; N++)
+    {
+      // Record start time
+      auto start = std::chrono::high_resolution_clock::now();
+
+      for (int j = 0; j < colCount; j++)
+      {
+        output = MaxSum(arrayA[i], 0, colCount);
+      }
+
+      /* Record end time */
+      auto finish = std::chrono::high_resolution_clock::now();
+      elapsed = finish - start;
+      timeMatrix[i][2] = timeMatrix[i][2] + elapsed.count(); //time in secs
+      if (highTime < elapsed.count())
+      {
+        highTime = elapsed.count();
+      }
+    }
+    colCount = colCount + 5;
+    timeMatrix[i][2] = timeMatrix[i][2] / 1000;
+    timeMatrix[i][6] = highTime;
+    highTime = 0; // reset
+    cout << "algorithm-3 row " << i << " run time average:\t" << timeMatrix[i][2]
+      << " s"<< endl;
+    cout << "algorithm-3 row " << i << " max run time:  \t" << timeMatrix[i][6]
+      << " s\n"<< endl;
+  }
+  colCount = 10; // reset
+
+  /*
+   *  step 7: algorithm-4
+   */
+  cout << "Starting step 7: algorithm-4 test run..." << endl;
+  for (int i = 0; i < MAX_ROW; i++)
+  {
+    for (int N = 0; N < 1000; N++)
+    {
+      // Record start time
+      auto start = std::chrono::high_resolution_clock::now();
+
+      for (int j = 0; j < colCount; j++)
+      {
+        output = algorithm_4(arrayA[i], colCount);
+      }
+
+      /* Record end time */
+      auto finish = std::chrono::high_resolution_clock::now();
+      elapsed = finish - start;
+      timeMatrix[i][3] = timeMatrix[i][3] + elapsed.count(); //time in secs
+      if (highTime < elapsed.count())
+      {
+        highTime = elapsed.count();
+      }
+    }
+    colCount = colCount + 5;
+    timeMatrix[i][3] = timeMatrix[i][3] / 1000;
+    timeMatrix[i][7] = highTime;
+    highTime = 0; // reset
+    cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3]
+      << " s"<< endl;
+    cout << "algorithm-4 row " << i << " max run time:  \t" << timeMatrix[i][7]
+      << " s\n"<< endl;
   }
   colCount = 10; // reset
 
