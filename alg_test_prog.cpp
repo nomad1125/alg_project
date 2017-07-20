@@ -174,9 +174,9 @@ void read_file(int *inputArray) {
   int colCount = 10;
   int **arrayA = new int*[MAX_ROW];
   srand (time(NULL));
-  int randomNum = rand() % 19 + (-9);
+  int randomNum = rand() % 2147483648 + (-2147483647);
 
-  cout << RAND_MAX << endl;
+  cout << randomNum << endl;
 
   int counter = 0;
   /* creates array */
