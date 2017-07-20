@@ -174,6 +174,8 @@ void read_file(int *inputArray) {
   int **arrayA = new int*[MAX_ROW];
   int randomNum = rand() % 19 + (-9);
 
+  cout << randomNum << endl;
+
   int counter = 0;
   /* creates array */
   for (int i = 0; i < MAX_ROW; i++)
