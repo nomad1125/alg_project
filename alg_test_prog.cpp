@@ -199,21 +199,41 @@ void read_file(int *inputArray) {
    *  source for elapsed time:
    *  https://www.pluralsight.com/blog/software-development/how-to-measure-execution-time-intervals-in-c--
    */
+  double timeMatrix[19][8];
+  double maxTime = 0;
+
+  /*
+   *  step 7: algorithm_1
+   */
   for (int i = 0; i < MAX_ROW; i++)
   {
-    // Record start time
-    auto start = std::chrono::high_resolution_clock::now();
-    for (int j = 0; j < colCount; j++)
+    for (int N = 0; N < 1000; N++)
     {
-      /* algorithm_1 */
-      output = algorithm_1(arrayA[i], colCount);
-    }
-    // Record end time
-    auto finish = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = finish - start;
-    cout << "algorithm-1 time: " << elapsed.count() << " s" << endl;
+      // Record start time
+      auto start = std::chrono::high_resolution_clock::now();
+      for (int j = 0; j < colCount; j++)
+      {
+        /* algorithm_1 */
+        output = algorithm_1(arrayA[i], colCount);
+      }
+      // Record end time
+      auto finish = std::chrono::high_resolution_clock::now();
+      std::chrono::duration<double> t1 = finish - start;
+      timeMatrix[i][0] = timeMatrix[i][0] + t1.count(); //time in secs
+      if (maxTime < t1.count())
+      {
+        maxTime = t1.count();
+      }
 
-    colCount = colCount + 5;
+      colCount = colCount + 5; //reset
+    }
+    timeMatrix[i][0] = timeMatrix[i][0] / 1000; // t1
+    timeMatrix[i][4] = maxTime; // t4
+    maxTime = 0; // reset
+    cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
+      << endl;
+    cout << "algorithm-1 row " << i << " max run time:  \t" << timeMatrix[i][4]
+      << endl;
   }
   colCount = 10; // reset
 
