@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <cstdlib>
+#include <chrono>
 
 using namespace std;
 
@@ -174,25 +175,46 @@ void read_file(int *inputArray) {
   int colCount = 10;
   int **arrayA = new int*[MAX_ROW];
   srand (time(NULL));
-  int randomNum = rand() % 2147483648 + (-2147483647);
 
-  cout << randomNum << endl;
-
-  int counter = 0;
   /* creates array */
   for (int i = 0; i < MAX_ROW; i++)
   {
     arrayA[i] = new int[colCount];
     colCount = colCount + 5;
   }
+  colCount = 10;  // to reset colCount
 
   /* fills array */
   for (int i = 0; i < MAX_ROW; i++)
   {
+    for (int j = 0; j < colCount; j++)
+    {
+      arrayA[i][j] = rand() % 2147483648 + (-2147483647);
+    }
+  }
+  colCount = 10; //reset
 
+  /* step 7 */
+  /**
+   *  source for elapsed time:
+   *  https://www.pluralsight.com/blog/software-development/how-to-measure-execution-time-intervals-in-c--
+   */
+
+
+  for (int i = 0; i < MAX_ROW; i++)
+  {
+    // Record start time
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int j = 0; j < colCount; j++)
+    {
+      /* algorithm_1 */
+      output = algorithm_1(arrayA[i], colCount);
+    }
+    // Record end time
+    auto finish = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = finish - start;
+    cout << "algorithm-1 time: " << elapsed.count() << " s" << endl;
   }
 
-   // generate_arrays(arrayA);
-
-   return 0;
+  return 0;
  }
