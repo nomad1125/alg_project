@@ -338,7 +338,7 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+      double elapsed = double (std::chrono::duration_cast <std::chrono::milliseconds>
                                                       (finish - start).count());
       timeMatrix[i][3] += elapsed; //time in secs
     }
@@ -372,25 +372,30 @@ void read_file(int *inputArray) {
     outFile.close();
   }
 
-  ofstream csvFile ("JarrettTang_MasonGlover_phw_output.csv");
-  if (outFile.is_open())
-  {
-    outFile << "algorithm-1,algorithm-2,algorithm-3,algorithm-4,"
-            << "T1(n),T2(n),T3(n),T4(n)" << endl;
-
-    for (int i = 0; i < 19; i++)
-    {
-      for (int j = 0; j < 8; j++)
-      {
-        csvFile << timeMatrix[i][j];
-        if (j < 7)
-        {
-          csvFile << ",";
-        }
-      }
-    }
-    outFile.close();
-  }
+  // ofstream csvFile ("JarrettTang_MasonGlover_phw_output.csv");
+  // string lineOutput = "";
+  // if (outFile.is_open())
+  // {
+  //   outFile << "algorithm-1,algorithm-2,algorithm-3,algorithm-4,T1(n),T2(n),T3(n),T4(n)\n";
+  //
+  //   for (int i = 0; i < 19; i++)
+  //   {
+  //     for (int j = 0; j < 8; j++)
+  //     {
+  //       lineOutput += timeMatrix[i][j];
+  //       if (j < 7)
+  //       {
+  //         lineOutput += ",";
+  //       }
+  //       else
+  //       {
+  //         lineOutput += "\n";
+  //         outFile << lineOutput;
+  //       }
+  //     }
+  //   }
+  //   outFile.close();
+  // }
 
   return 0;
  }
