@@ -3,7 +3,7 @@
 #	Makefile
 #	variables
 CC = g++
-CFLAGS = -std=c++11
+CFLAGS = -g -std=c++11
 
 all : alg_prog
 
