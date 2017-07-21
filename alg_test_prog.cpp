@@ -350,29 +350,26 @@ void read_file(int *inputArray) {
   }
   colCount = 10; // reset
 
-  string textOutput = "algorithm-1, algorithm-2, algorithm-3, algorithm-4, T1(n), T2(n), T3(n), T4(n)\n";
-
-  /* phw_output.txt */
-  for (int i = 0; i < 19; i++)
-  {
-    for (int j = 0; j < 8; j++)
-    {
-      textOutput += timeMatrix[i][j];
-      if (j != 5)
-      {
-        textOutput += ", ";
-      }
-    }
-    textOutput += "\n";
-  }
-
   ofstream outFile ("JarrettTang_MasonGlover_phw_output.txt");
   if (outFile.is_open())
   {
-    outFile << textOutput;
+    outFile << "algorithm-1, algorithm-2, algorithm-3, algorithm-4,"
+            << " T1(n), T2(n), T3(n), T4(n)" << endl;
+
+    for (int i = 0; i < 19; i++)
+    {
+      for (int j = 0; j < 8; j++)
+      {
+        outFile << timeMatrix[i][j];
+        if (j != 5)
+        {
+          outFile << ", ";
+        }
+      }
+      outFile << endl;
+    }
     outFile.close();
   }
-
 
   return 0;
  }
