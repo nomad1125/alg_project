@@ -244,7 +244,7 @@ void read_file(int *inputArray) {
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
       elapsed = finish - start;
-      timeMatrix[i][0] = timeMatrix[i][0] + elapsed.count(); //time in secs
+      timeMatrix[i][0] += elapsed.count(); //time in secs
     }
     timeMatrix[i][0] = timeMatrix[i][0] / 1000;
     timeMatrix[i][0] = timeMatrix[i][0] * 1000000000;
@@ -363,7 +363,19 @@ void read_file(int *inputArray) {
         textOutput += ", ";
       }
     }
+    textOutput += "\n";
   }
+
+  ofstream outFile ("JarrettTang_MasonGlover_phw_output.txt");
+  if (outFile.is_open())
+  {
+    while (getline (outFile,textOutput))
+    {
+      cout << textOutput;
+    }
+    outFile.close();
+  }
+
 
   return 0;
  }
