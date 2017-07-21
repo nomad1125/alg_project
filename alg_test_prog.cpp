@@ -116,9 +116,24 @@ int algorithm_4(int *X, int arraySize)
   return maxSoFar;
 }
 
-int get_theoretical_t1(int N)
+double get_theoretical_t1(int N)
 {
   return 3 * pow(N, 3) + (9 / 2) * pow(N, 2) + (9 / 2) * N + 3;
+}
+
+double get_theoretical_t2(int N)
+{
+  return 5 * pow(N, 2) + (15 / 2) * N + 3;
+}
+
+double get_theoretical_t3(int N)
+{
+  return 0.0;
+}
+
+double get_theoretical_t4(int N)
+{
+  return 0.0;
 }
 
 // parts of this was sourced from old code which is based off of:
@@ -208,7 +223,6 @@ void read_file(int *inputArray) {
    */
   cout << "\nStarting step 7..." << endl;
   double timeMatrix[19][8];
-  double highTime = 0;
   std::chrono::duration<double> elapsed;
 
   /*
@@ -231,18 +245,13 @@ void read_file(int *inputArray) {
       auto finish = std::chrono::high_resolution_clock::now();
       elapsed = finish - start;
       timeMatrix[i][0] = timeMatrix[i][0] + elapsed.count(); //time in secs
-      if (highTime < elapsed.count())
-      {
-        highTime = elapsed.count();
-      }
     }
-    colCount = colCount + 5;
     timeMatrix[i][0] = timeMatrix[i][0] / 1000;
-    timeMatrix[i][4] = highTime;
-    highTime = 0; // reset
+    timeMatrix[i][4] = get_theoretical_t1(colCount);
+    colCount = colCount + 5;
     cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
       << " s"<< endl;
-    cout << "algorithm-1 row " << i << " max run time:  \t" << timeMatrix[i][4]
+    cout << "algorithm-1 row " << i << " theoretical run time:\t" << timeMatrix[i][4]
       << " s\n"<< endl;
   }
   colCount = 10; // reset
@@ -267,18 +276,13 @@ void read_file(int *inputArray) {
       auto finish = std::chrono::high_resolution_clock::now();
       elapsed = finish - start;
       timeMatrix[i][1] = timeMatrix[i][1] + elapsed.count(); //time in secs
-      if (highTime < elapsed.count())
-      {
-        highTime = elapsed.count();
-      }
     }
-    colCount = colCount + 5;
     timeMatrix[i][1] = timeMatrix[i][1] / 1000;
-    timeMatrix[i][5] = highTime;
-    highTime = 0; // reset
+    timeMatrix[i][5] = get_theoretical_t2(colCount);
+    colCount = colCount + 5;
     cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1]
       << " s"<< endl;
-    cout << "algorithm-2 row " << i << " max run time:  \t" << timeMatrix[i][5]
+    cout << "algorithm-2 row " << i << " theoretical run time:  \t" << timeMatrix[i][5]
       << " s\n"<< endl;
   }
   colCount = 10; // reset
@@ -303,18 +307,13 @@ void read_file(int *inputArray) {
       auto finish = std::chrono::high_resolution_clock::now();
       elapsed = finish - start;
       timeMatrix[i][2] = timeMatrix[i][2] + elapsed.count(); //time in secs
-      if (highTime < elapsed.count())
-      {
-        highTime = elapsed.count();
-      }
     }
-    colCount = colCount + 5;
     timeMatrix[i][2] = timeMatrix[i][2] / 1000;
-    timeMatrix[i][6] = highTime;
-    highTime = 0; // reset
+    timeMatrix[i][6] = get_theoretical_t3(colCount);
+    colCount = colCount + 5;
     cout << "algorithm-3 row " << i << " run time average:\t" << timeMatrix[i][2]
       << " s"<< endl;
-    cout << "algorithm-3 row " << i << " max run time:  \t" << timeMatrix[i][6]
+    cout << "algorithm-3 row " << i << " theoretical run time:  \t" << timeMatrix[i][6]
       << " s\n"<< endl;
   }
   colCount = 10; // reset
@@ -339,24 +338,32 @@ void read_file(int *inputArray) {
       auto finish = std::chrono::high_resolution_clock::now();
       elapsed = finish - start;
       timeMatrix[i][3] = timeMatrix[i][3] + elapsed.count(); //time in secs
-      if (highTime < elapsed.count())
-      {
-        highTime = elapsed.count();
-      }
     }
-    colCount = colCount + 5;
     timeMatrix[i][3] = timeMatrix[i][3] / 1000;
-    timeMatrix[i][7] = highTime;
-    highTime = 0; // reset
+    timeMatrix[i][7] = get_theoretical_t4(colCount);
+    colCount = colCount + 5;
     cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3]
       << " s"<< endl;
-    cout << "algorithm-4 row " << i << " max run time:\t" << timeMatrix[i][7]
+    cout << "algorithm-4 row " << i << " theoretical run time:\t" << timeMatrix[i][7]
       << " s\n"<< endl;
   }
   colCount = 10; // reset
 
-  string textOutput = "algorithm-1, algorithm-2, algorithm-3, algorithm-4, T1(n), T2(n), T3(n), T4(n)\n";
+  string textOutput = "algorithm-1, algorithm-2, algorithm-3, algorithm-4,"
+                      + " T1(n), T2(n), T3(n), T4(n)\n";
 
+  /* phw_output.txt */
+  for (int i = 0; i < 19; i++)
+  {
+    for (int j = 0; j < 8; j++)
+    {
+      textOutput += timeMatrix[i][j];
+      if (j != 5)
+      {
+        textOutput += ", ";
+      }
+    }
+  }
 
   return 0;
  }
