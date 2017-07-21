@@ -243,7 +243,8 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
+      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+                                                      (finish - start).count());
       timeMatrix[i][0] += elapsed; //time in nanosecondsecs
     }
     timeMatrix[i][0] = timeMatrix[i][0] / 100;
@@ -262,7 +263,7 @@ void read_file(int *inputArray) {
   cout << "Starting step 7: algorithm-2 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int N = 0; N < 1000; N++)
+    for (int N = 0; N < 100; N++)
     {
       // Record start time
       auto start = std::chrono::high_resolution_clock::now();
@@ -274,16 +275,17 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = finish - start;
-      timeMatrix[i][1] = timeMatrix[i][1] + elapsed.count(); //time in secs
+      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+                                                      (finish - start).count());
+      timeMatrix[i][1] += elapsed; //time in nanosecondsecs
     }
-    timeMatrix[i][1] = timeMatrix[i][1] / 1000;
+    timeMatrix[i][1] = timeMatrix[i][1] / 100;
     timeMatrix[i][5] = get_theoretical_t2(colCount);
     colCount = colCount + 5;
     cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1]
-      << " s"<< endl;
+      << " ns"<< endl;
     cout << "algorithm-2 row " << i << " theoretical run time:  \t" << timeMatrix[i][5]
-      << " s\n"<< endl;
+      << " ns\n"<< endl;
   }
   colCount = 10; // reset
 
@@ -293,7 +295,7 @@ void read_file(int *inputArray) {
   cout << "Starting step 7: algorithm-3 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int N = 0; N < 1000; N++)
+    for (int N = 0; N < 100; N++)
     {
       // Record start time
       auto start = std::chrono::high_resolution_clock::now();
@@ -305,16 +307,17 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = finish - start;
-      timeMatrix[i][2] = timeMatrix[i][2] + elapsed.count(); //time in secs
+      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+                                                      (finish - start).count());
+      timeMatrix[i][2] += elapsed; //time in secs
     }
-    timeMatrix[i][2] = timeMatrix[i][2] / 1000;
+    timeMatrix[i][2] = timeMatrix[i][2] / 100;
     timeMatrix[i][6] = get_theoretical_t3(colCount);
     colCount = colCount + 5;
     cout << "algorithm-3 row " << i << " run time average:\t" << timeMatrix[i][2]
-      << " s"<< endl;
+      << " ns"<< endl;
     cout << "algorithm-3 row " << i << " theoretical run time:  \t" << timeMatrix[i][6]
-      << " s\n"<< endl;
+      << " ns\n"<< endl;
   }
   colCount = 10; // reset
 
@@ -324,7 +327,7 @@ void read_file(int *inputArray) {
   cout << "Starting step 7: algorithm-4 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int N = 0; N < 1000; N++)
+    for (int N = 0; N < 100; N++)
     {
       // Record start time
       auto start = std::chrono::high_resolution_clock::now();
@@ -336,16 +339,17 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = finish - start;
-      timeMatrix[i][3] = timeMatrix[i][3] + elapsed.count(); //time in secs
+      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+                                                      (finish - start).count());
+      timeMatrix[i][3] += elapsed; //time in secs
     }
-    timeMatrix[i][3] = timeMatrix[i][3] / 1000;
+    timeMatrix[i][3] = timeMatrix[i][3] / 100;
     timeMatrix[i][7] = get_theoretical_t4(colCount);
     colCount = colCount + 5;
     cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3]
-      << " s"<< endl;
+      << " ns"<< endl;
     cout << "algorithm-4 row " << i << " theoretical run time:\t" << timeMatrix[i][7]
-      << " s\n"<< endl;
+      << " ns\n"<< endl;
   }
   colCount = 10; // reset
 
