@@ -1,5 +1,6 @@
 /*
- *  Jarrett Tang (903482852)
+ *  Jarrett Tang
+ *  Mason Glover
  *  main.cpp
  */
 
@@ -147,7 +148,6 @@ void read_file(int *inputArray) {
   }
 }
 
-// uncomment the read_file for full program
 /**
  *  source of multi dimensional array research:
  *  https://stackoverflow.com/questions/936687/how-do-i-declare-a-2d-array-in-c-using-new
@@ -350,7 +350,7 @@ void read_file(int *inputArray) {
     highTime = 0; // reset
     cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3]
       << " s"<< endl;
-    cout << "algorithm-4 row " << i << " max run time:  \t" << timeMatrix[i][7]
+    cout << "algorithm-4 row " << i << " max run time:\t" << timeMatrix[i][7]
       << " s\n"<< endl;
   }
   colCount = 10; // reset
