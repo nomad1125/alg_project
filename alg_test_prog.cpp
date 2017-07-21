@@ -247,22 +247,20 @@ void read_file(int *inputArray) {
   // cout << "Starting step 7: algorithm-1 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int N = 0; N < 100; N++)
+    /* record start time */
+    auto start = std::chrono::steady_clock::now();
+    for (int N = 0; N < 1000; N++)
     {
-      /* record start time */
-      auto start = std::chrono::steady_clock::now();
-
       for (int j = 0; j < colCount; j++)
       {
         output = algorithm_1(arrayA[i], colCount);
       }
-
-      /* Record end time */
-      auto finish = std::chrono::steady_clock::now();
-      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
-      timeMatrix[i][0] += elapsed;
     }
-    timeMatrix[i][0] = timeMatrix[i][0] / 100; // divivdes to average out the elapsed times
+    /* Record end time */
+    auto finish = std::chrono::steady_clock::now();
+    elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
+    timeMatrix[i][0] = elapsed;
+    timeMatrix[i][0] = timeMatrix[i][0] / 1000; // divivdes to average out the elapsed times
     timeMatrix[i][4] = get_theoretical_t1(colCount);
     colCount = colCount + 5;
     cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0] << endl;
@@ -276,7 +274,7 @@ void read_file(int *inputArray) {
   // cout << "Starting step 7: algorithm-2 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int N = 0; N < 100; N++)
+    for (int N = 0; N < 1000; N++)
     {
       // Record start time
       auto start = std::chrono::steady_clock::now();
@@ -291,7 +289,7 @@ void read_file(int *inputArray) {
       elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
       timeMatrix[i][1] += elapsed;
     }
-    timeMatrix[i][1] = timeMatrix[i][1] / 100; // divivdes to average out the elapsed times
+    timeMatrix[i][1] = timeMatrix[i][1] / 1000; // divivdes to average out the elapsed times
     timeMatrix[i][5] = get_theoretical_t2(colCount);
     colCount = colCount + 5;
     cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1] << endl;
@@ -305,7 +303,7 @@ void read_file(int *inputArray) {
   // cout << "Starting step 7: algorithm-3 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int N = 0; N < 100; N++)
+    for (int N = 0; N < 1000; N++)
     {
       // Record start time
       auto start = std::chrono::steady_clock::now();
@@ -320,7 +318,7 @@ void read_file(int *inputArray) {
       elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
       timeMatrix[i][2] += elapsed;
     }
-    timeMatrix[i][2] = timeMatrix[i][2] / 100; // divivdes to average out the elapsed times
+    timeMatrix[i][2] = timeMatrix[i][2] / 1000; // divivdes to average out the elapsed times
     timeMatrix[i][6] = get_theoretical_t3(colCount);
     colCount = colCount + 5;
     cout << "algorithm-3 row " << i << " run time average:\t" << timeMatrix[i][2] << endl;
@@ -334,7 +332,7 @@ void read_file(int *inputArray) {
   // cout << "Starting step 7: algorithm-4 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int N = 0; N < 100; N++)
+    for (int N = 0; N < 1000; N++)
     {
       // Record start time
       auto start = std::chrono::steady_clock::now();
@@ -349,7 +347,7 @@ void read_file(int *inputArray) {
       elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
       timeMatrix[i][3] += elapsed;
     }
-    timeMatrix[i][3] = timeMatrix[i][3] / 100; // divivdes to average out the elapsed times
+    timeMatrix[i][3] = timeMatrix[i][3] / 1000; // divivdes to average out the elapsed times
     timeMatrix[i][7] = get_theoretical_t4(colCount);
     colCount = colCount + 5;
     cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3] << endl;
