@@ -147,14 +147,14 @@ double get_theoretical_t4(int N)
 // parts of this was sourced from old code which is based off of:
 // https://www.uow.edu.au/~lukes/TEXTBOOK/notes-cpp/io/readtextfile.html
 void read_file(int *inputArray) {
-  cout << "Beginning to read file...\n";
+  cout << "Beginning to read file...\n" << endl;
   string output = "";
   int index = 0;
   ifstream inFile;
   inFile.open("phw_input.txt");
 
   if (!inFile) {
-    cerr << "Unable to open file...";
+    cerr << "Unable to open file..." << endl;
     return;
   }
 
@@ -171,7 +171,7 @@ void read_file(int *inputArray) {
 
     if (i < 9)
     {
-      cout << ",";
+      cout << "," << endl;
     }
     else
     {
@@ -265,8 +265,8 @@ void read_file(int *inputArray) {
     timeMatrix[i][0] = timeMatrix[i][0] / 1000; // divivdes to average out the elapsed times
     timeMatrix[i][4] = get_theoretical_t1(colCount);
     colCount = colCount + 5;
-    cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0];
-    cout << "algorithm-1 row " << i << " theory run time:\t" << timeMatrix[i][4];
+    cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0] << endl;
+    cout << "algorithm-1 row " << i << " theory run time:\t" << timeMatrix[i][4] << endl;
   }
   colCount = 10; // reset
 
@@ -294,8 +294,8 @@ void read_file(int *inputArray) {
     timeMatrix[i][1] = timeMatrix[i][1] / 1000; // divivdes to average out the elapsed times
     timeMatrix[i][5] = get_theoretical_t2(colCount);
     colCount = colCount + 5;
-    cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1];
-    cout << "algorithm-2 row " << i << " theory run time:  \t" << timeMatrix[i][5];
+    cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1] << endl;
+    cout << "algorithm-2 row " << i << " theory run time:  \t" << timeMatrix[i][5] << endl;
   }
   colCount = 10; // reset
 
@@ -323,8 +323,8 @@ void read_file(int *inputArray) {
     timeMatrix[i][2] = timeMatrix[i][2] / 1000; // divivdes to average out the elapsed times
     timeMatrix[i][6] = get_theoretical_t3(colCount);
     colCount = colCount + 5;
-    cout << "algorithm-3 row " << i << " run time average:\t" << timeMatrix[i][2];
-    cout << "algorithm-3 row " << i << " theory run time:  \t" << timeMatrix[i][6];
+    cout << "algorithm-3 row " << i << " run time average:\t" << timeMatrix[i][2] << endl;
+    cout << "algorithm-3 row " << i << " theory run time:  \t" << timeMatrix[i][6] << endl;
   }
   colCount = 10; // reset
 
@@ -352,10 +352,8 @@ void read_file(int *inputArray) {
     timeMatrix[i][3] = timeMatrix[i][3] / 1000; // divivdes to average out the elapsed times
     timeMatrix[i][7] = get_theoretical_t4(colCount);
     colCount = colCount + 5;
-    cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3]
-      << " ms"<< endl;
-    cout << "algorithm-4 row " << i << " theory run time:\t" << timeMatrix[i][7]
-      << " ms\n"<< endl;
+    cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3] << endl;
+    cout << "algorithm-4 row " << i << " theory run time:\t" << timeMatrix[i][7] << endl;
   }
   colCount = 10; // reset
 
