@@ -128,7 +128,7 @@ double get_theoretical_t2(int N)
 
 double get_theoretical_t3(int N)
 {
-  return 0.0;
+  return 12 * N * log(N) + 6 * (pow(2,log(N)));
 }
 
 double get_theoretical_t4(int N)
@@ -216,14 +216,13 @@ void read_file(int *inputArray) {
   }
   colCount = 10; //reset
 
-  /**
+  /*
    *  step 7
    *  source for elapsed time:
    *  https://www.pluralsight.com/blog/software-development/how-to-measure-execution-time-intervals-in-c--
    */
   cout << "\nStarting step 7..." << endl;
   double timeMatrix[19][8];
-  double elapsed;
 
   /*
    *  step 7: algorithm-1
@@ -243,7 +242,7 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
                                                       (finish - start).count());
       timeMatrix[i][0] += elapsed; //time in nanosecondsecs
     }
@@ -252,7 +251,7 @@ void read_file(int *inputArray) {
     colCount = colCount + 5;
     cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
       << " ns"<< endl;
-    cout << "algorithm-1 row " << i << " theoretical run time:\t" << timeMatrix[i][4]
+    cout << "algorithm-1 row " << i << " theory run time:\t" << timeMatrix[i][4]
       << " ns\n"<< endl;
   }
   colCount = 10; // reset
@@ -275,7 +274,7 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
                                                       (finish - start).count());
       timeMatrix[i][1] += elapsed; //time in nanosecondsecs
     }
@@ -284,7 +283,7 @@ void read_file(int *inputArray) {
     colCount = colCount + 5;
     cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1]
       << " ns"<< endl;
-    cout << "algorithm-2 row " << i << " theoretical run time:  \t" << timeMatrix[i][5]
+    cout << "algorithm-2 row " << i << " theory run time:  \t" << timeMatrix[i][5]
       << " ns\n"<< endl;
   }
   colCount = 10; // reset
@@ -307,7 +306,7 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
                                                       (finish - start).count());
       timeMatrix[i][2] += elapsed; //time in secs
     }
@@ -316,7 +315,7 @@ void read_file(int *inputArray) {
     colCount = colCount + 5;
     cout << "algorithm-3 row " << i << " run time average:\t" << timeMatrix[i][2]
       << " ns"<< endl;
-    cout << "algorithm-3 row " << i << " theoretical run time:  \t" << timeMatrix[i][6]
+    cout << "algorithm-3 row " << i << " theory run time:  \t" << timeMatrix[i][6]
       << " ns\n"<< endl;
   }
   colCount = 10; // reset
@@ -339,7 +338,7 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
+      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
                                                       (finish - start).count());
       timeMatrix[i][3] += elapsed; //time in secs
     }
@@ -348,7 +347,7 @@ void read_file(int *inputArray) {
     colCount = colCount + 5;
     cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3]
       << " ns"<< endl;
-    cout << "algorithm-4 row " << i << " theoretical run time:\t" << timeMatrix[i][7]
+    cout << "algorithm-4 row " << i << " theory run time:\t" << timeMatrix[i][7]
       << " ns\n"<< endl;
   }
   colCount = 10; // reset
@@ -356,8 +355,8 @@ void read_file(int *inputArray) {
   ofstream outFile ("JarrettTang_MasonGlover_phw_output.txt");
   if (outFile.is_open())
   {
-    outFile << "algorithm-1, algorithm-2, algorithm-3, algorithm-4,"
-            << " T1(n), T2(n), T3(n), T4(n)" << endl;
+    outFile << "algorithm-1,algorithm-2,algorithm-3,algorithm-4,"
+            << "T1(n),T2(n),T3(n),T4(n)" << endl;
 
     for (int i = 0; i < 19; i++)
     {
@@ -366,7 +365,28 @@ void read_file(int *inputArray) {
         outFile << timeMatrix[i][j];
         if (j < 7)
         {
-          outFile << ", ";
+          outFile << ",";
+        }
+      }
+      outFile << endl;
+    }
+    outFile.close();
+  }
+
+  ofstream outFile ("JarrettTang_MasonGlover_phw_output.csv");
+  if (outFile.is_open())
+  {
+    outFile << "algorithm-1,algorithm-2,algorithm-3,algorithm-4,"
+            << "T1(n),T2(n),T3(n),T4(n)" << endl;
+
+    for (int i = 0; i < 19; i++)
+    {
+      for (int j = 0; j < 8; j++)
+      {
+        outFile << timeMatrix[i][j];
+        if (j < 7)
+        {
+          outFile << ",";
         }
       }
       outFile << endl;
