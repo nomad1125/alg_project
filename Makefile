@@ -1,8 +1,9 @@
-#	Jarrett Tang (903482852)
+#	Jarrett Tang
+# Masong Glover
 #	Makefile
 #	variables
 CC = g++
-CFLAGS = -g -std=c++11
+CFLAGS = -std=c++11
 
 all : alg_prog
 
