@@ -361,7 +361,7 @@ void read_file(int *inputArray) {
       for (int j = 0; j < 8; j++)
       {
         outFile << timeMatrix[i][j];
-        if (j != 5)
+        if (j < 7)
         {
           outFile << ", ";
         }
