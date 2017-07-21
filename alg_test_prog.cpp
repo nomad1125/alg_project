@@ -231,7 +231,7 @@ void read_file(int *inputArray) {
   cout << "Starting step 7: algorithm-1 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
-    for (int N = 0; N < 1000; N++)
+    for (int N = 0; N < 100; N++)
     {
       /* record start time */
       auto start = std::chrono::high_resolution_clock::now();
@@ -246,7 +246,7 @@ void read_file(int *inputArray) {
       elapsed = finish - start;
       timeMatrix[i][0] += elapsed.count(); //time in secs
     }
-    timeMatrix[i][0] = timeMatrix[i][0] / 1000;
+    timeMatrix[i][0] = timeMatrix[i][0] / 100;
     timeMatrix[i][0] = timeMatrix[i][0] * 1000000000;
     timeMatrix[i][4] = get_theoretical_t1(colCount);
     colCount = colCount + 5;
