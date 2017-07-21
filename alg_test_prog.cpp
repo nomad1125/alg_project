@@ -192,7 +192,7 @@ void read_file(int *inputArray) {
    cout << "algorithm-4: " << output << "\n"<< endl;
 
   /* Start step 6 */
-  cout << "Starting step 6..." << endl;
+  // cout << "Starting step 6..." << endl;
   const int MAX_ROW = 19;
   int colCount = 10;
   int **arrayA = new int*[MAX_ROW];
@@ -230,22 +230,20 @@ void read_file(int *inputArray) {
   cout << "Starting step 7: algorithm-1 test run..." << endl;
   for (int i = 0; i < MAX_ROW; i++)
   {
+    /* record start time */
+    auto start = std::chrono::steady_clock::now();
     for (int N = 0; N < 100; N++)
     {
-      /* record start time */
-      auto start = std::chrono::high_resolution_clock::now();
-
       for (int j = 0; j < colCount; j++)
       {
         output = algorithm_1(arrayA[i], colCount);
       }
-
-      /* Record end time */
-      auto finish = std::chrono::high_resolution_clock::now();
-      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
-                                                      (finish - start).count());
-      timeMatrix[i][0] += elapsed; //time in nanosecondsecs
     }
+    /* Record end time */
+    auto finish = std::chrono::steady_clock::now();
+    double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
+    timeMatrix[i][0] += elapsed; //time in nanosecondsecs
+
     timeMatrix[i][0] = timeMatrix[i][0] / 100;
     timeMatrix[i][4] = get_theoretical_t1(colCount);
     colCount = colCount + 5;
@@ -338,8 +336,7 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      double elapsed = double (std::chrono::duration_cast <std::chrono::milliseconds>
-                                                      (finish - start).count());
+      double elapsed = double (std::chrono::duration_cast <std::chrono::seconds> (finish - start).count());
       timeMatrix[i][3] += elapsed; //time in secs
     }
     timeMatrix[i][3] = timeMatrix[i][3] / 100;
@@ -367,35 +364,14 @@ void read_file(int *inputArray) {
         {
           outFile << ",";
         }
+        else
+        {
+          outFile << "\n";
+        }
       }
     }
     outFile.close();
   }
-
-  // ofstream csvFile ("JarrettTang_MasonGlover_phw_output.csv");
-  // string lineOutput = "";
-  // if (outFile.is_open())
-  // {
-  //   outFile << "algorithm-1,algorithm-2,algorithm-3,algorithm-4,T1(n),T2(n),T3(n),T4(n)\n";
-  //
-  //   for (int i = 0; i < 19; i++)
-  //   {
-  //     for (int j = 0; j < 8; j++)
-  //     {
-  //       lineOutput += timeMatrix[i][j];
-  //       if (j < 7)
-  //       {
-  //         lineOutput += ",";
-  //       }
-  //       else
-  //       {
-  //         lineOutput += "\n";
-  //         outFile << lineOutput;
-  //       }
-  //     }
-  //   }
-  //   outFile.close();
-  // }
 
   return 0;
  }
