@@ -81,7 +81,7 @@ int MaxSum(int *X, int L, int U)
     sum = 0; maxToLeft = 0;
     for (int I = M; I > L; I--)
     {
-      sum = sum+X[I];
+      sum = sum + X[I];
       maxToLeft = max(maxToLeft, sum);
     }
 
@@ -141,7 +141,7 @@ double get_theoretical_t3(int N)
 
 double get_theoretical_t4(int N)
 {
-  return 0.0;
+  return 48 * N;
 }
 
 // parts of this was sourced from old code which is based off of:
