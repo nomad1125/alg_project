@@ -223,7 +223,6 @@ void read_file(int *inputArray) {
    */
   cout << "\nStarting step 7..." << endl;
   double timeMatrix[19][8];
-  std::chrono::duration<double> elapsed;
 
   /*
    *  step 7: algorithm-1
@@ -243,11 +242,10 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::high_resolution_clock::now();
-      elapsed = finish - start;
-      timeMatrix[i][0] += elapsed.count(); //time in secs
+      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
+      timeMatrix[i][0] += elapsed; //time in nanosecondsecs
     }
     timeMatrix[i][0] = timeMatrix[i][0] / 100;
-    timeMatrix[i][0] = timeMatrix[i][0] * 1000000000;
     timeMatrix[i][4] = get_theoretical_t1(colCount);
     colCount = colCount + 5;
     cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
