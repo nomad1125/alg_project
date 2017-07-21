@@ -227,7 +227,7 @@ void read_file(int *inputArray) {
   {
     for (int j = 0; j < colCount; j++)
     {
-      arrayA[i][j] = rand() % 2000000001 + (-2000000000);
+      arrayA[i][j] = rand() % 1000 + (-1000);
     }
   }
   colCount = 10; //reset
@@ -248,7 +248,7 @@ void read_file(int *inputArray) {
   {
     /* record start time */
     auto start = std::chrono::steady_clock::now();
-    for (int N = 0; N < 100; N++)
+    for (int N = 0; N < 1000; N++)
     {
       for (int j = 0; j < colCount; j++)
       {
@@ -260,13 +260,14 @@ void read_file(int *inputArray) {
     double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
     timeMatrix[i][0] += elapsed; //time in nanosecondsecs
 
-    timeMatrix[i][0] = timeMatrix[i][0] / 1000;
+    timeMatrix[i][0] = timeMatrix[i][0] / 1000; // divivdes to average out the elapsed times
+    timeMatrix[i][0] = timeMatrix[i][0] * 1000000; // scales the elapsed time to ms
     timeMatrix[i][4] = get_theoretical_t1(colCount);
     colCount = colCount + 5;
-    // cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
-    //   << " ns"<< endl;
-    // cout << "algorithm-1 row " << i << " theory run time:\t" << timeMatrix[i][4]
-    //   << " ns\n"<< endl;
+    cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
+      << " ms"<< endl;
+    cout << "algorithm-1 row " << i << " theory run time:\t" << timeMatrix[i][4]
+      << " ms\n"<< endl;
   }
   colCount = 10; // reset
 
@@ -288,17 +289,17 @@ void read_file(int *inputArray) {
 
       /* Record end time */
       auto finish = std::chrono::steady_clock::now();
-      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
-                                                      (finish - start).count());
+      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
       timeMatrix[i][1] += elapsed; //time in nanosecondsecs
     }
-    timeMatrix[i][1] = timeMatrix[i][1] / 1000;
+    timeMatrix[i][1] = timeMatrix[i][1] / 1000; // divivdes to average out the elapsed times
+    timeMatrix[i][1] = timeMatrix[i][1] * 1000000; // scales the elapsed time to ms
     timeMatrix[i][5] = get_theoretical_t2(colCount);
     colCount = colCount + 5;
-    // cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1]
-    //   << " ns"<< endl;
-    // cout << "algorithm-2 row " << i << " theory run time:  \t" << timeMatrix[i][5]
-    //   << " ns\n"<< endl;
+    cout << "algorithm-2 row " << i << " run time average:\t" << timeMatrix[i][1]
+      << " ms"<< endl;
+    cout << "algorithm-2 row " << i << " theory run time:  \t" << timeMatrix[i][5]
+      << " ms\n"<< endl;
   }
   colCount = 10; // reset
 
@@ -323,13 +324,14 @@ void read_file(int *inputArray) {
       double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
       timeMatrix[i][2] += elapsed; //time in secs
     }
-    timeMatrix[i][2] = timeMatrix[i][2] / 1000;
+    timeMatrix[i][2] = timeMatrix[i][2] / 1000; // divivdes to average out the elapsed times
+    timeMatrix[i][2] = timeMatrix[i][2] * 1000000; // scales the elapsed time to ms
     timeMatrix[i][6] = get_theoretical_t3(colCount);
     colCount = colCount + 5;
-    // cout << "algorithm-3 row " << i << " run time average:\t" << timeMatrix[i][2]
-    //   << " ns"<< endl;
-    // cout << "algorithm-3 row " << i << " theory run time:  \t" << timeMatrix[i][6]
-    //   << " ns\n"<< endl;
+    cout << "algorithm-3 row " << i << " run time average:\t"
+          << timeMatrix[i][2] << " ms"<< endl;
+    cout << "algorithm-3 row " << i << " theory run time:  \t"
+          << timeMatrix[i][6] << " ms\n"<< endl;
   }
   colCount = 10; // reset
 
@@ -354,13 +356,14 @@ void read_file(int *inputArray) {
       double elapsed = double (std::chrono::duration_cast <std::chrono::seconds> (finish - start).count());
       timeMatrix[i][3] += elapsed; //time in secs
     }
-    timeMatrix[i][3] = timeMatrix[i][3] / 1000;
+    timeMatrix[i][3] = timeMatrix[i][3] / 1000; // divivdes to average out the elapsed times
+    timeMatrix[i][3] = timeMatrix[i][3] * 1000000; // scales the elapsed time to ms
     timeMatrix[i][7] = get_theoretical_t4(colCount);
     colCount = colCount + 5;
     cout << "algorithm-4 row " << i << " run time average:\t" << timeMatrix[i][3]
-      << " ns"<< endl;
+      << " ms"<< endl;
     cout << "algorithm-4 row " << i << " theory run time:\t" << timeMatrix[i][7]
-      << " ns\n"<< endl;
+      << " ms\n"<< endl;
   }
   colCount = 10; // reset
 
