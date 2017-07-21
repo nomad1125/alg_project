@@ -368,12 +368,11 @@ void read_file(int *inputArray) {
           outFile << ",";
         }
       }
-      outFile << endl;
     }
     outFile.close();
   }
 
-  ofstream outFile ("JarrettTang_MasonGlover_phw_output.csv");
+  ofstream csvFile ("JarrettTang_MasonGlover_phw_output.csv");
   if (outFile.is_open())
   {
     outFile << "algorithm-1,algorithm-2,algorithm-3,algorithm-4,"
@@ -383,13 +382,12 @@ void read_file(int *inputArray) {
     {
       for (int j = 0; j < 8; j++)
       {
-        outFile << timeMatrix[i][j];
+        csvFile << timeMatrix[i][j];
         if (j < 7)
         {
-          outFile << ",";
+          csvFile << ",";
         }
       }
-      outFile << endl;
     }
     outFile.close();
   }
