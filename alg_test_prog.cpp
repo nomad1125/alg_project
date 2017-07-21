@@ -211,7 +211,7 @@ void read_file(int *inputArray) {
   {
     for (int j = 0; j < colCount; j++)
     {
-      arrayA[i][j] = rand() % 2147483648 + (-2147483647);
+      arrayA[i][j] = rand() % 2000000001 + (-2000000000);
     }
   }
   colCount = 10; //reset
@@ -263,7 +263,7 @@ void read_file(int *inputArray) {
     for (int N = 0; N < 100; N++)
     {
       // Record start time
-      auto start = std::chrono::high_resolution_clock::now();
+      auto start = std::chrono::steady_clock::now();
 
       for (int j = 0; j < colCount; j++)
       {
@@ -271,7 +271,7 @@ void read_file(int *inputArray) {
       }
 
       /* Record end time */
-      auto finish = std::chrono::high_resolution_clock::now();
+      auto finish = std::chrono::steady_clock::now();
       double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
                                                       (finish - start).count());
       timeMatrix[i][1] += elapsed; //time in nanosecondsecs
@@ -295,7 +295,7 @@ void read_file(int *inputArray) {
     for (int N = 0; N < 100; N++)
     {
       // Record start time
-      auto start = std::chrono::high_resolution_clock::now();
+      auto start = std::chrono::steady_clock::now();
 
       for (int j = 0; j < colCount; j++)
       {
@@ -303,9 +303,8 @@ void read_file(int *inputArray) {
       }
 
       /* Record end time */
-      auto finish = std::chrono::high_resolution_clock::now();
-      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds>
-                                                      (finish - start).count());
+      auto finish = std::chrono::steady_clock::now();
+      double elapsed = double (std::chrono::duration_cast <std::chrono::nanoseconds> (finish - start).count());
       timeMatrix[i][2] += elapsed; //time in secs
     }
     timeMatrix[i][2] = timeMatrix[i][2] / 100;
@@ -327,7 +326,7 @@ void read_file(int *inputArray) {
     for (int N = 0; N < 100; N++)
     {
       // Record start time
-      auto start = std::chrono::high_resolution_clock::now();
+      auto start = std::chrono::steady_clock::now();
 
       for (int j = 0; j < colCount; j++)
       {
@@ -335,7 +334,7 @@ void read_file(int *inputArray) {
       }
 
       /* Record end time */
-      auto finish = std::chrono::high_resolution_clock::now();
+      auto finish = std::chrono::steady_clock::now();
       double elapsed = double (std::chrono::duration_cast <std::chrono::seconds> (finish - start).count());
       timeMatrix[i][3] += elapsed; //time in secs
     }
