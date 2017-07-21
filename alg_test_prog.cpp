@@ -163,6 +163,7 @@ void read_file(int *inputArray) {
     converter >> inputArray[index];
     index++;
   }
+  inFile.close();
 
   cout << "Numbers inputted into array:\n";
   for (int i = 0; i < 10; i++)
