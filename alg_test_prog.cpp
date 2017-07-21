@@ -369,10 +369,7 @@ void read_file(int *inputArray) {
   ofstream outFile ("JarrettTang_MasonGlover_phw_output.txt");
   if (outFile.is_open())
   {
-    while (getline (outFile,textOutput))
-    {
-      cout << textOutput;
-    }
+    outFile << textOutput;
     outFile.close();
   }
 
