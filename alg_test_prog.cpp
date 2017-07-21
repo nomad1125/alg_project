@@ -235,30 +235,22 @@ void read_file(int *inputArray) {
     auto start = std::chrono::high_resolution_clock::now();
     for (int N = 0; N < 1000; N++)
     {
-      // Record start time
-      // auto start = std::chrono::high_resolution_clock::now();
-
       for (int j = 0; j < colCount; j++)
       {
         output = algorithm_1(arrayA[i], colCount);
       }
-
-      // Record end time
-      // auto finish = std::chrono::high_resolution_clock::now();
-      // elapsed = finish - start;
-      // timeMatrix[i][0] = timeMatrix[i][0] + elapsed.count(); //time in secs
     }
     auto finish = std::chrono::high_resolution_clock::now();
     elapsed = finish - start;
     timeMatrix[i][0] = timeMatrix[i][0] + elapsed.count(); //time in secs
-    
     timeMatrix[i][0] = timeMatrix[i][0] / 1000;
+    timeMatrix[i][0] = timeMatrix[i][0] * 1000000000;
     timeMatrix[i][4] = get_theoretical_t1(colCount);
     colCount = colCount + 5;
     cout << "algorithm-1 row " << i << " run time average:\t" << timeMatrix[i][0]
-      << " s"<< endl;
+      << " ns"<< endl;
     cout << "algorithm-1 row " << i << " theoretical run time:\t" << timeMatrix[i][4]
-      << " s\n"<< endl;
+      << " ns\n"<< endl;
   }
   colCount = 10; // reset
 
