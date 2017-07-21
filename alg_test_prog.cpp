@@ -11,6 +11,7 @@
 #include <time.h>
 #include <cstdlib>
 #include <chrono>
+#include <math.h>
 
 using namespace std;
 
@@ -112,6 +113,11 @@ int algorithm_4(int *X, int arraySize)
     maxSoFar = max(maxSoFar, maxEndingHere);
   }
   return maxSoFar;
+}
+
+int get_theoretical_t1(int N)
+{
+  return 3 * pow(N, 3) + (9 / 2) * pow(N, 2) + (9 / 2) * N + 3;
 }
 
 // parts of this was sourced from old code which is based off of:
@@ -348,6 +354,9 @@ void read_file(int *inputArray) {
       << " s\n"<< endl;
   }
   colCount = 10; // reset
+
+  string textOutput = "algorithm-1, algorithm-2, algorithm-3, algorithm-4, T1(n), T2(n), T3(n), T4(n)\n";
+
 
   return 0;
  }
